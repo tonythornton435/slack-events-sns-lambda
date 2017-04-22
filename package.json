@@ -1,0 +1,23 @@
+{
+  "name": "slack-events-api-lambda",
+  "version": "1.0.0",
+  "description": "Provides a Slack Events API endpoint powered by AWS Lambda",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava test/*.js"
+  },
+  "author": "Chris Zarate",
+  "repository": "https://github.com/chriszarate/slack-events-api-lambda",
+  "license": "ISC",
+  "files": [
+    "*",
+    ".env"
+  ],
+  "dependencies": {
+    "claudia-api-builder": "^2.4.1",
+    "dotenv": "^4.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1"
+  }
+}
