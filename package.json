@@ -1,23 +1,27 @@
 {
-  "name": "slack-events-api-lambda",
+  "name": "slack-events-sns-lambda",
   "version": "1.0.0",
-  "description": "Provides a Slack Events API endpoint powered by AWS Lambda",
+  "description": "Provides a connector between the Slack Events API and AWS SNS, powered by AWS Lambda",
   "main": "index.js",
   "scripts": {
     "test": "ava test/*.js"
   },
   "author": "Chris Zarate",
-  "repository": "https://github.com/chriszarate/slack-events-api-lambda",
+  "repository": "https://github.com/chriszarate/slack-events-sns-lambda",
   "license": "ISC",
   "files": [
     "*",
     ".env"
   ],
   "dependencies": {
+    "aws-sdk": "^2.45.0",
     "claudia-api-builder": "^2.4.1",
     "dotenv": "^4.0.0"
   },
   "devDependencies": {
-    "ava": "^0.19.1"
+    "ava": "^0.19.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0"
   }
 }
