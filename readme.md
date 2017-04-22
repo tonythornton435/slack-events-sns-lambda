@@ -12,7 +12,7 @@ Populate `.env` in the root of the repo:
 AWS_REGION=us-east-1
 AWS_SNS_TOPIC_PREFIX=slack-events-TEST
 SLACK_APP_VERIFICATION_TOKEN=token
-SLACK_MACHINE_USER_NAME=qzbot
+SLACK_MACHINE_USER_NAME=mybot
 ```
 
 ## Creating and updating the endpoint
