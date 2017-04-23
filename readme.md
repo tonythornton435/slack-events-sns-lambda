@@ -2,15 +2,14 @@
 
 This repo provides a [Slack Events API][events-api] endpoint on AWS API Gateway
 and Lambda to process Slack events. It handles the endpoint verification and
-then publishes the events to SNS if there is a corresponding topic.
+then publishes the events to SNS.
 
 ## Configuration
 
 Populate `.env` in the root of the repo:
 
 ```
-AWS_REGION=us-east-1
-AWS_SNS_TOPIC_PREFIX=slack-events-TEST
+AWS_SNS_TOPIC_ARN_PREFIX=arn:aws:sns:us-east-1:11111111:slack-events-
 SLACK_APP_VERIFICATION_TOKEN=token
 SLACK_MACHINE_USER_NAME=mybot
 ```
@@ -21,8 +20,8 @@ SLACK_MACHINE_USER_NAME=mybot
 claudia create --name my-slack-endpoint --region us-east-1 --api-module index
 ```
 
-Claudia will print out the endpoint base URL. Append `/messages` to the end,
-provide it to Slack in the "Event Subscriptions" section of your app
+[Claudia][claudia] will print out the endpoint base URL. Append `/messages` to
+the end and provide it to Slack in the "Event Subscriptions" section of your app
 configuration.
 
 Update the endpoint with:
@@ -46,9 +45,19 @@ or
 @bot-name verb command
 ```
 
-Any messages not matching that format will be ignored. If an SNS topic exists
-corresponding to the provided `verb` (see `src/publishMessage`), then the event
-will be published to that SNS topic.
+Any messages not matching that format will be ignored.
+
+Add your verb to the `supportedBotVerbs` array in `src/process-message` and
+create a corresponding SNS topic. If your `AWS_SNS_TOPIC_ARN_PREFIX` is
+`arn:aws:sns:us-east-1:11111111:slack-events-` and your verb is `ping`, then the
+ARN of the SNS topic you create should be:
+
+```
+arn:aws:sns:us-east-1:11111111:slack-events-ping
+```
+
+Some additional information related to the parsed command will be added to the
+event, and the result is published to the SNS topic.
 
 ## That's it?
 
