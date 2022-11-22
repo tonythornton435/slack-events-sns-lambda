@@ -6,9 +6,6 @@
   "scripts": {
     "test": "ava test/*.js"
   },
-  "author": "Chris Zarate",
-  "repository": "https://github.com/chriszarate/slack-events-sns-lambda",
-  "license": "ISC",
   "files": [
     "*",
     ".env"
